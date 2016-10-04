@@ -128,7 +128,7 @@
 #define UI_TEXT_HOME_Y_ID 21 //           "Home Y"
 #define UI_TEXT_HOME_Z_ID 22 //           "Home Z"
 #define UI_TEXT_PREHEAT_PLA_ID 23 //      "Preheat PLA"
-#define UI_TEXT_PREHEAT_ABS_ID 24 //      "Preheat ABS"
+#define UI_TEXT_PREHEAT_ABS_ID 24 //      "Preheat PETG"
 #define UI_TEXT_LIGHTS_ONOFF_ID 25 //     "Lights :%lo"
 #define UI_TEXT_COOLDOWN_ID 26 //         "Cooldown"
 #define UI_TEXT_SET_TO_ORIGIN_ID 27 //    "Set to Origin"
@@ -408,7 +408,7 @@
 #define UI_TEXT_HOME_Y_EN           "Home Y"
 #define UI_TEXT_HOME_Z_EN           "Home Z"
 #define UI_TEXT_PREHEAT_PLA_EN      "Preheat PLA"
-#define UI_TEXT_PREHEAT_ABS_EN      "Preheat ABS"
+#define UI_TEXT_PREHEAT_ABS_EN      "Preheat PETG"
 #define UI_TEXT_LIGHTS_ONOFF_EN     "Lights:%lo"
 #define UI_TEXT_COOLDOWN_EN         "Cooldown"
 #define UI_TEXT_SET_TO_ORIGIN_EN    "Set to origin"
@@ -634,10 +634,10 @@
 #elif FEATURE_DITTO_PRINTING
 #define UI_TEXT_MAINPAGE6_3_EN "Copies: %ed    Z:%x2"
 #else
-#define UI_TEXT_MAINPAGE6_3_EN "Flow:\xfd %of%%%   Z:%x2"
+#define UI_TEXT_MAINPAGE6_3_EN "Buf: %oB      Z:%x2" // Flow:\xfd %of%%%   Z:%x2
 #endif
-#define UI_TEXT_MAINPAGE6_4_EN "Mul: %om%%% \xfd   E: %x4m"
-#define UI_TEXT_MAINPAGE6_5_EN "Buf: %oB"
+#define UI_TEXT_MAINPAGE6_4_EN "Flow:\xfd %of%%%   E: %x4m" // Mul: %om%%% \xfd   E: %x4m
+#define UI_TEXT_MAINPAGE6_5_EN "Mul:  %om%%%" // Buf: %oB
 #define UI_TEXT_MAINPAGE6_6_EN "%os"
 #define UI_TEXT_MAINPAGE_TEMP_BED_EN cTEMP "%ec/%Ec" cDEG "B%eB/%Eb" cDEG
 #define UI_TEXT_MAINPAGE_BED_EN "B%eB/%Eb" cDEG
