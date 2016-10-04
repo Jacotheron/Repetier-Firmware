@@ -1,62 +1,30 @@
-# Repetier-Firmware - the fast and user friendly firmware
+# Repetier-Firmware for D5S - the fast and user friendly firmware
 
-## Installation
+This repository contains a forked version of the original Repetier Version, which is specifically tailored for the Wanhao D5S series printers.
 
-Please use your configuration tool at 
-[http://www.repetier.com/firmware/v092](http://www.repetier.com/firmware/v092)
-for easy and fast configuration. You get the complete sources you need to compile from the online configurator.
-This system also allows it to upload configurations created with this tool and modify the configuration. This is handy for updates as you get all newly introduced parameter just by uploading the old version and downloading the
-latest version. New parameter are initalized with default values.
+## Warning
 
-## Version 0.92.8 
-* Cleaner code base.
-* Pulse dense modulation for heater and fans.
-* Bed bump correction for delta printer.
-* Correction of parallelogram distortions.
-* Decoupling test for heater and sensor for more safety.
-* Mixing extruder support.
-* Test for watchdog.
-* Allow cold extrusion.
-* Fixed pause sd print issues.
-* Commands on sd stop.
-* Disable heaters/extruders on sd stop.
-* Safety question for sd stop.
-* Many minor corrections and improvements.
-* Extra motor drivers.
-* Event system for lights etc.
-* New homing sequence with preheat for nozzle based z sensors.
-* Language selectable on runtime.
-* Fix structure for Arduino 1.6.7
-* New bed leveling.
-* Fatal error handling added.
+This firmware is pre-beta software and can have bugs. It is not recommended to run this firmware without knowledge of the firmware and how it interacts with your machine.
 
-## Version 0.91 released 2013-12-30
-
-WARNING: This version only compiles with older Arduino IDE 1.0.x, for
-compilation with newest version use 0.92
-
-Improvements over old code:
-* Works with CodeBlocks for Arduino http://www.arduinodev.com/codeblocks/#download
-  which can replace the ArduinoIDE with a much better one on windows systems. Load the
-  Repetier.cdb project file for this.
-* Better readable code.
-* Long filename support (from Glenn Kreisel).
-* Animated menu changes.
-* Separation of logic and hardware access to allow different processor architectures
-  by changing the hardware related files.
-* z-leveling support.
-* Mirroring of x,y and z motor.
-* Ditto printing.
-* Faster and better delta printing.
-* New heat manager (dead time control).
-* Removed OPS handling.
-* Full graphic display support.
-* Many bug fixes.
-* many other changes.
+## Changes
+* Made to work with a D5S Mainboard and D5S screen (the screen uses non-standard pinouts and other requirements).
+* Made to use a 100k NTC 3950 thermistor in stead of the stock k-type thermocouple. In order to use this, you have to create a voltage divider board/circuit (I made mine from standard stip board - tutorial coming soon).
+* Features that I do not use, was disabled. You are welcome to configure these in the firmware.
+* The Configuration file is not Assistant Tool ready, but it contains full comments.
+* Buzzer have been disabled, is was getting irritating (but you can enable it).
+* Stopping a print will Home the head in the X direction (I hated the head just remaining where it was), before disabling the steppers.
+* EEPROM is enabled and thus a lot of values can be changed using Repetier Host.
 
 ## Documentation
 
 For documentation please visit [http://www.repetier.com/documentation/repetier-firmware/](http://www.repetier.com/documentation/repetier-firmware/)
+
+In order to compile this, you will need Arduino IDE (the latest is able to compile this firmware). The D5S mainboard is an Arduino Mega 2560 compatible board (you will need to select it from the Tools menu).
+The firmware Arduino File is located in "src/ArduinoAVR/Repetier/repetier.ino"
+
+For now the firmware will not be in a ready to flash file format - you have the source to help debug and contibute to the development.
+
+While it is possible to make the D5S control a heatbed (through a Reprap.me Power Expander and separate power supply), this can only happen on the older mainboards (where there are more than one temperature sensing and control outputs). My mainboard can do this, but to keep this usable by others I will create a separate branch for the added heatbed.
 
 ## Developer
 
@@ -69,6 +37,8 @@ Other developers:
 - John Silvia (Arduino Due port)
 - sdavi (first u8glib code implementation)
 - plus several small contributions from other users.
+
+This D5S specific version is developed by Jaco Theron.
 
 ## Introduction
 
@@ -86,14 +56,9 @@ Some ideas were also taken from Teacup, Grbl and Marlin.
 - Trajectory smoothing for smoother lines.
 - Nozzle pressure control for improved print quality with RAMPS.
 - Fast - 40000 Hz and more stepper frequency is possible with a 16 MHz AVR.
-- Support for Arduino Due based boards allowing much faster speeds. 
-- Multiple extruder supported (max. 6 extruder).
 - Standard ASCII and improved binary (Repetier protocol) communication.
 - Autodetect the command protocol, so it will work with any host software.
-- Important parameters are stored in EEPROM and can easily be modified without
-  recompilation of the firmware.
-- Automatic bed leveling.
-- Mixed extruder.
+- Important parameters are stored in EEPROM and can easily be modified without recompilation of the firmware.
 - Detection of heater/thermistor decoupling.
 - 2 fans plus thermistor controlled fan.
 - Multi-Language support, switchable at runtime.

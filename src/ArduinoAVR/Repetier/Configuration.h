@@ -1484,7 +1484,7 @@ motorized bed leveling */
  * DISTORTION_CORRECTION_R is the distance of last row or column from center
  */
 
-#define DISTORTION_CORRECTION         1
+#define DISTORTION_CORRECTION         0
 #define DISTORTION_CORRECTION_POINTS  5
 /* For delta printers you simply define the measured radius around origin */
 #define DISTORTION_CORRECTION_R       80
