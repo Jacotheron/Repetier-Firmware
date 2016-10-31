@@ -761,7 +761,7 @@ void uiCheckSlowKeys(uint16_t &action) {}
 #elif MOTHERBOARD == 37 // UltiMaker 1.5.7
 #undef BEEPER_PIN
 #define BEEPER_PIN 44
-#define UI_DISPLAY_RS_PIN      3
+#define UI_DISPLAY_RS_PIN		3
 #define UI_DISPLAY_RW_PIN      -1
 #define UI_DISPLAY_ENABLE_PIN  4
 #define UI_DISPLAY_D0_PIN      2
@@ -854,7 +854,7 @@ void uiCheckSlowKeys(uint16_t &action) {}
 #define UI_RESET_PIN           41
 #endif
 #endif // smartcontroller
-#define UI_DELAYPERCHAR 50
+#define UI_DELAYPERCHAR 40
 #if FEATURE_CONTROLLER == CONTROLLER_BAM_DICE_DUE
 #define UI_ENCODER_SPEED 2
 #endif
