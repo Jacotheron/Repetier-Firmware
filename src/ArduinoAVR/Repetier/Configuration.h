@@ -1,5 +1,4 @@
-/*
-    This file is part of Repetier-Firmware.
+/*    This file is part of Repetier-Firmware.
 
     Repetier-Firmware is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -897,7 +896,7 @@ on this endstop.
 // small amount back. This is also the case with H-belt systems.
 #define ENDSTOP_X_BACK_ON_HOME 1
 #define ENDSTOP_Y_BACK_ON_HOME 1
-#define ENDSTOP_Z_BACK_ON_HOME 1
+#define ENDSTOP_Z_BACK_ON_HOME 0
 
 
 
