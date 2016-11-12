@@ -4,7 +4,7 @@ This repository contains a forked version of the original Repetier Version, whic
 
 ## Warning
 
-This firmware is pre-beta software and can have bugs. It is not recommended to run this firmware without knowledge of the firmware and how it interacts with your machine.
+**This firmware is currently not working, please go to the other repository for working firmware: [https://github.com/Jacotheron/D5S-Repetier-Firmware](https://github.com/Jacotheron/D5S-Repetier-Firmware)**
 
 ## Changes
 * Made to work with a D5S Mainboard and D5S screen (the screen uses non-standard pinouts and other requirements).

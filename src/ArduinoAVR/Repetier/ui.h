@@ -760,7 +760,7 @@ void uiCheckSlowKeys(uint16_t &action) {}
 
 #elif MOTHERBOARD == 37 // UltiMaker 1.5.7
 #undef BEEPER_PIN
-#define BEEPER_PIN 44
+#define BEEPER_PIN				44
 #define UI_DISPLAY_RS_PIN		3
 #define UI_DISPLAY_RW_PIN      -1
 #define UI_DISPLAY_ENABLE_PIN  4

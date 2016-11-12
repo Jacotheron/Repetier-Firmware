@@ -1,4 +1,5 @@
-/*    This file is part of Repetier-Firmware.
+/*
+    This file is part of Repetier-Firmware.
 
     Repetier-Firmware is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -513,8 +514,8 @@ you moved the extruder while changing filament during print.
 /** Will first retract short distance, go to change position and then retract longretract.
 Retractions speeds are taken from RETRACTION_SPEED and RETRACTION_UNDO_SPEED
 */
-#define FILAMENTCHANGE_SHORTRETRACT 30
-#define FILAMENTCHANGE_LONGRETRACT 30
+#define FILAMENTCHANGE_SHORTRETRACT 5
+#define FILAMENTCHANGE_LONGRETRACT 50
 
 /* Define how we detect jam/out of filament
    1 = Distance between signal changes increase
@@ -524,7 +525,7 @@ Retractions speeds are taken from RETRACTION_SPEED and RETRACTION_UNDO_SPEED
    2 and 3 are not jam detections, but only out of filament detection by a switch
    that changes the signal! 
 */
-#define JAM_METHOD 1
+#define JAM_METHOD 0
 // Steps normally needed for a full signal cycle.
 #define JAM_STEPS 220
 // Steps for reducing speed. Must be higher then JAM_STEPS
@@ -532,7 +533,7 @@ Retractions speeds are taken from RETRACTION_SPEED and RETRACTION_UNDO_SPEED
 // New speed multiplier which gets set when slowdown is reached.
 #define JAM_SLOWDOWN_TO 70
 // Last fallback. If we slip this much, we want to pause.
-#define JAM_ERROR_STEPS 430
+#define JAM_ERROR_STEPS 500
 /** To prevent signal bouncing, only consider changes if we are this much steps
  away from last signal change. */
 #define JAM_MIN_STEPS 10
@@ -542,7 +543,7 @@ Determine what should be done if a jam is detected
 1 : Jam/out of filament dialog and block communication.
 2 : Message to host/server otherwise continue and mark extruder jammed
 */
-#define JAM_ACTION 1
+#define JAM_ACTION 0
 
 /** PID control only works target temperature +/- PID_CONTROL_RANGE.
 If you get much overshoot at the first temperature set, because the heater is going full power too long, you
@@ -552,7 +553,7 @@ need to increase this value. For one 6.8 Ohm heater 10 is ok. With two 6.8 Ohm h
 
 /** Prevent extrusions longer then x mm for one command. This is especially important if you abort a print. Then the
 extrusion position might be at any value like 23344. If you then have an G1 E-2 it will roll back 23 meter! */
-#define EXTRUDE_MAXLENGTH 100
+#define EXTRUDE_MAXLENGTH 160
 /** Skip wait, if the extruder temperature is already within x degrees. Only fixed numbers, 0 = off */
 #define SKIP_M109_IF_WITHIN 2
 
@@ -566,13 +567,13 @@ If your EXT0_PID_MAX is low, you should prefer the second method.
 #define SCALE_PID_TO_MAX 0
 
 
-#define HEATER_PWM_SPEED 1 // How fast ist pwm signal 0 = 15.25Hz, 1 = 30.51Hz, 2 = 61.03Hz, 3 = 122.06Hz
+#define HEATER_PWM_SPEED 0 // How fast ist pwm signal 0 = 15.25Hz, 1 = 30.51Hz, 2 = 61.03Hz, 3 = 122.06Hz
 
 /** Temperature range for target temperature to hold in M109 command. 5 means +/-5 degC
 
 Uncomment define to force the temperature into the range for given watch period.
 */
-//#define TEMP_HYSTERESIS 5
+#define TEMP_HYSTERESIS 0
 
 /** Userdefined thermistor table
 
@@ -690,7 +691,7 @@ Value is used for all generic tables created. */
 /** \brief Set true if you have a heated bed connected to your board, false if not */
 #define HAVE_HEATED_BED 0
 
-#define HEATED_BED_MAX_TEMP 115
+#define HEATED_BED_MAX_TEMP 120
 /** Skip M190 wait, if heated bed is already within x degrees. Fixed numbers only, 0 = off. */
 #define SKIP_M190_IF_WITHIN 3
 
@@ -711,7 +712,7 @@ Heat manager for heated bed:
 2 = Bang Bang, limited check every HEATED_BED_SET_INTERVAL. Use this with relay-driven beds to save life time
 3 = dead time control
 */
-#define HEATED_BED_HEAT_MANAGER 1
+#define HEATED_BED_HEAT_MANAGER 0
 /** \brief The maximum value, I-gain can contribute to the output.
 The precise values may differ for different nozzle/resistor combination.
  Overridden if EEPROM activated.
@@ -1064,8 +1065,8 @@ Mega. Used only for nonlinear systems like delta or tuga. */
 #define MAX_FEEDRATE_Z 5
 
 /** Home position speed in mm/s. Overridden if EEPROM activated. */
-#define HOMING_FEEDRATE_X 80
-#define HOMING_FEEDRATE_Y 80
+#define HOMING_FEEDRATE_X 40
+#define HOMING_FEEDRATE_Y 40
 #define HOMING_FEEDRATE_Z 3
 
 /** Set order of axis homing. Use HOME_ORDER_XYZ and replace XYZ with your order. 
@@ -1220,7 +1221,7 @@ is at least molten. After having some complains that the extruder does not work,
 it 0 as default.
 */
 
-#define MIN_EXTRUDER_TEMP 160
+#define MIN_EXTRUDER_TEMP 150
 
 /** \brief Enable advance algorithm.
 
@@ -1304,7 +1305,7 @@ matches, the stored values are used to overwrite the settings.
 IMPORTANT: With mode <>0 some changes in Configuration.h are not set any more, as they are
            taken from the EEPROM.
 */
-#define EEPROM_MODE 1
+#define EEPROM_MODE 2
 
 
 /**************** duplicate motor driver ***************
@@ -1362,6 +1363,8 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define SERVO3_NEUTRAL_POS  -1
 /** Set to servo number +1 to control that servo in ui menu. 0 disables ui control. */
 #define UI_SERVO_CONTROL 0
+
+
 
 
 /** Some fans won't start for low values, but would run if started with higher power at the beginning.
